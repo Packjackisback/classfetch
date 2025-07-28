@@ -1,0 +1,35 @@
+{
+  "name": "classlink-fetcher",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "homepage": "https://packjackisback.github.io/classfetch/",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "@mantine/core": "^7.x.x",
+    "@mantine/hooks": "^7.x.x",
+    "react": "^18.x.x",
+    "react-dom": "^18.x.x"
+  },
+  "devDependencies": {
+    "@types/react": "^18.x.x",
+    "@types/react-dom": "^18.x.x",
+    "@typescript-eslint/eslint-plugin": "^7.x.x",
+    "@typescript-eslint/parser": "^7.x.x",
+    "@vitejs/plugin-react": "^4.x.x",
+    "eslint": "^8.x.x",
+    "eslint-plugin-react-hooks": "^4.x.x",
+    "eslint-plugin-react-refresh": "^0.4.x",
+    "gh-pages": "^6.x.x",
+    "typescript": "^5.x.x",
+    "vite": "^5.x.x"
+  }
+}
+
