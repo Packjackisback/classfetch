@@ -3,20 +3,16 @@ import {
   MantineProvider,
   createTheme,
   Container,
-  Paper,
   Text,
   Title,
   Button,
   TextInput,
   Loader,
-  List,
-  Divider,
   Box,
   Alert,
   Anchor,
   Modal,
   rem,
-  Flex,
   Stack,
   Card,
   Badge,
@@ -84,11 +80,7 @@ const theme = createTheme({
           padding: `0 ${rem(16)}`,
           border: '1px solid transparent',
           transition: 'all 0.15s ease',
-        },
-      },
-      variants: {
-        filled: () => ({
-          root: {
+          '&[data-variant="filled"]': {
             backgroundColor: '#000',
             color: '#fff',
             '&:hover': {
@@ -98,10 +90,8 @@ const theme = createTheme({
               backgroundColor: '#e4e4e7',
               color: '#a1a1aa',
             }
-          }
-        }),
-        outline: () => ({
-          root: {
+          },
+          '&[data-variant="outline"]': {
             backgroundColor: 'transparent',
             color: '#000',
             borderColor: '#e4e4e7',
@@ -110,8 +100,8 @@ const theme = createTheme({
               borderColor: '#d4d4d8',
             }
           }
-        })
-      }
+        },
+      },
     },
     TextInput: {
       styles: {
@@ -163,6 +153,21 @@ const theme = createTheme({
           borderRadius: rem(6),
           border: '1px solid',
           padding: rem(16),
+          '&[data-color="red"]': {
+            backgroundColor: '#fef2f2',
+            borderColor: '#fecaca',
+            color: '#dc2626',
+          },
+          '&[data-color="blue"]': {
+            backgroundColor: '#eff6ff',
+            borderColor: '#bfdbfe',
+            color: '#2563eb',
+          },
+          '&[data-color="green"]': {
+            backgroundColor: '#f0fdf4',
+            borderColor: '#bbf7d0',
+            color: '#16a34a',
+          }
         },
         title: {
           marginBottom: rem(4),
@@ -173,27 +178,6 @@ const theme = createTheme({
           fontSize: rem(14),
         }
       },
-      variants: {
-        light: () => ({
-          root: {
-            '&[data-color="red"]': {
-              backgroundColor: '#fef2f2',
-              borderColor: '#fecaca',
-              color: '#dc2626',
-            },
-            '&[data-color="blue"]': {
-              backgroundColor: '#eff6ff',
-              borderColor: '#bfdbfe',
-              color: '#2563eb',
-            },
-            '&[data-color="green"]': {
-              backgroundColor: '#f0fdf4',
-              borderColor: '#bbf7d0',
-              color: '#16a34a',
-            }
-          }
-        })
-      }
     },
     Modal: {
       styles: {
@@ -224,16 +208,10 @@ const theme = createTheme({
           height: rem(20),
           paddingLeft: rem(8),
           paddingRight: rem(8),
+          backgroundColor: '#f4f4f5',
+          color: '#52525b',
         }
       },
-      variants: {
-        light: () => ({
-          root: {
-            backgroundColor: '#f4f4f5',
-            color: '#52525b',
-          }
-        })
-      }
     }
   },
 });
@@ -272,7 +250,7 @@ function App() {
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
     if (code) { setInput(code); }
-    else { setModal(true); setError('No code provided. Please use the userscript and login to classlink, or (advanced) enter it manually in the box.'); }
+    else { setModal(true); setError('No code provided. Please append "?code=YOUR_CODE_HERE" to the URL or enter it in the box (advanced) to provide the code.'); }
     setReady(true);
   }, []);
 
@@ -323,10 +301,10 @@ function App() {
                   marginBottom: rem(12)
                 }}
               >
-                Class Fetch
+                ClassLink Data
               </Title>
               <Text size="lg" c="#71717a" maw={rem(500)} mx="auto">
-                Retrieve your schedule before official release. 
+                Get your classes before they are officially released! 
               </Text>
             </Box>
 
@@ -382,7 +360,7 @@ function App() {
                 {error}
                 {error.includes("Failed to fetch") && (
                   <Text size="sm" mt="xs" c="dimmed">
-                    Ensure API endpoints are accessible.
+                    Ensure API endpoints are accessible or proxy is functioning correctly.
                   </Text>
                 )}
               </Alert>
