@@ -250,7 +250,7 @@ function App() {
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
     if (code) { setInput(code); }
-    else { setModal(true); setError('No code provided. Please append "?code=YOUR_CODE_HERE" to the URL or enter it in the box (advanced) to provide the code.'); }
+    else { setModal(true); setError('No code provided. Please use the userscript (guide) or enter it in the box (advanced) to provide the code.'); }
     setReady(true);
   }, []);
 
