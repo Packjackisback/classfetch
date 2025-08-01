@@ -497,6 +497,16 @@ function App() {
                   Firefox Add-ons
                 </Anchor>
               </Group>
+              <Group>
+                <Text size="sm" fw={500}>iOS:</Text>
+                <Anchor 
+                  href="https://apps.apple.com/us/app/userscripts/id1463298887" 
+                  target="_blank" 
+                  size="sm"
+                >
+                  App Store
+                </Anchor>
+              </Group>
             </Stack>
           </Box>
 
