@@ -536,6 +536,19 @@ function App() {
             </Text>
           </Box>
 
+          <Box>
+            <Title order={4} size={rem(16)} fw={600} mb={rem(8)}>
+              Video Guide
+            </Title>
+            <Anchor
+              href="https://youtu.be/gVrhlVdXU1Q"
+              target="_blank"
+              fw={500}
+            >
+            Guide for desktop
+            </Anchor>
+          </Box>
+
           <Group justify="flex-end" mt={rem(16)}>
             <Button variant="outline" onClick={closeModal}>
               Close
